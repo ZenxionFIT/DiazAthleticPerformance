@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Red/White/Black Pattern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .pattern-bg {
+        /* Updated SVG for 5 seamless waves with adjusted colors and vertical alignment */
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='200' viewBox='0 0 100 200' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Line 1: Red --%3E%3Cpath d='M0 20 Q 25 0 50 20 Q 75 40 100 20' stroke='%23FF0000' stroke-width='4' fill='none'/%3E%3C!-- Line 2: White --%3E%3Cpath d='M0 60 Q 25 40 50 60 Q 75 80 100 60' stroke='%23FFFFFF' stroke-width='4' fill='none'/%3E%3C!-- Line 3: White --%3E%3Cpath d='M0 100 Q 25 80 50 100 Q 75 120 100 100' stroke='%23FFFFFF' stroke-width='4' fill='none'/%3E%3C!-- Line 4: Red --%3E%3Cpath d='M0 140 Q 25 120 50 140 Q 75 160 100 140' stroke='%23FF0000' stroke-width='4' fill='none'/%3E%3C!-- Line 5: White --%3E%3Cpath d='M0 180 Q 25 160 50 180 Q 75 200 100 180' stroke='%23FFFFFF' stroke-width='4' fill='none'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 100px 200px; /* Adjusted to new SVG height */
+        animation: scroll-bg 20s linear infinite;
+      }
+
+      @keyframes scroll-bg {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 100% 100%;
+        }
+      }
+
+      .vignette {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 75%);
+        pointer-events: none; /* Allows clicks to pass through */
+      }
+    </style>
+  </head>
+  <body class="min-h-screen pattern-bg flex items-center justify-center relative bg-black">
+    <div class="vignette"></div>
+  </body>
+</html>
