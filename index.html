@@ -1,467 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    <title>Diaz Athletic Performance - Unleash Your True Potential</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scroll from animations */
-        }
-        /* Custom scroll-to-top button styling */
-        #scrollToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 99;
-            border: none;
-            outline: none;
-            background-color: #e53e3e;
-            color: white;
-            cursor: pointer;
-            padding: 15px;
-            border-radius: 50%;
-            font-size: 18px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    <title>Diaz Athletic Performance - Unleash Your True Potential</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+        /* Custom scroll-to-top button styling */
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #e53e3e;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform */
+        }
 
-        #scrollToTopBtn:hover {
-            background-color: #c53030;
-            transform: translateY(-3px); /* Lift effect on hover */
-        }
+        #scrollToTopBtn:hover {
+            background-color: #c53030;
+            transform: translateY(-3px); /* Lift effect on hover */
+        }
 
-        /* Custom Keyframe Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        /* Custom Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
 
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
 
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
-        /* Text background animation */
-        @keyframes scrollText {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-100%); }
-        }
+        /* Text background animation */
+        @keyframes scrollText {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
 
-        .bg-text-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200%; /* Initial width to allow for full scroll */
-            height: 100%;
-            pointer-events: none; /* Allow clicks to pass through */
-            opacity: 0.1; /* Subtle effect */
-            animation: scrollText 30s linear infinite; /* Adjust duration as needed */
-        }
+        .bg-text-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%; /* Initial width to allow for full scroll */
+            height: 100%;
+            pointer-events: none; /* Allow clicks to pass through */
+            opacity: 0.1; /* Subtle effect */
+            animation: scrollText 30s linear infinite; /* Adjust duration as needed */
+        }
 
-        .bg-text {
-            position: absolute;
-            white-space: nowrap;
-            font-size: 1.5vw; /* Responsive font size */
-            color: #6b7280; /* Tailwind gray-400 */
-        }
+        .bg-text {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 1.5vw; /* Responsive font size */
+            color: #6b7280; /* Tailwind gray-400 */
+        }
 
-        /* Initial state for scroll animations (hidden by default) */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition for both in/out */
-            will-change: opacity, transform; /* Optimize for animation */
-        }
-        .scroll-animate.left {
-            transform: translateX(-50px);
-        }
-        .scroll-animate.right {
-            transform: translateX(50px);
-        }
+        /* Initial state for scroll animations (hidden by default) */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition for both in/out */
+            will-change: opacity, transform; /* Optimize for animation */
+        }
+        .scroll-animate.left {
+            transform: translateX(-50px);
+        }
+        .scroll-animate.right {
+            transform: translateX(50px);
+        }
 
-        /* Styles when 'is-visible' is added (the "in" state) */
-        .scroll-animate.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .scroll-animate.is-visible.left {
-            transform: translateX(0);
-        }
-        .scroll-animate.is-visible.right {
-            transform: translateX(0);
-        }
-        .scroll-animate.is-visible.animate-zoomIn {
-            animation: zoomIn 0.6s ease-out forwards;
-        }
-        .scroll-animate.is-visible.animate-slideInLeft {
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-        .scroll-animate.is-visible.animate-slideInRight {
-            animation: slideInRight 0.8s ease-out forwards;
-        }
-        .scroll-animate.is-visible.animate-fadeInUp {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
+        /* Styles when 'is-visible' is added (the "in" state) */
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-animate.is-visible.left {
+            transform: translateX(0);
+        }
+        .scroll-animate.is-visible.right {
+            transform: translateX(0);
+        }
+        .scroll-animate.is-visible.animate-zoomIn {
+            animation: zoomIn 0.6s ease-out forwards;
+        }
+        .scroll-animate.is-visible.animate-slideInLeft {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        .scroll-animate.is-visible.animate-slideInRight {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        .scroll-animate.is-visible.animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
 
-        /* Initial load animations for Hero section - these stay animated after load */
-        .hero-animate {
-            animation-play-state: paused; /* Paused initially, triggered by JS */
-            opacity: 0; /* Hidden initially */
-            transform: translateY(20px); /* Slight lift */
-        }
-        .hero-animate.animate-fadeInUp {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
+        /* Initial load animations for Hero section - these stay animated after load */
+        .hero-animate {
+            animation-play-state: paused; /* Paused initially, triggered by JS */
+            opacity: 0; /* Hidden initially */
+            transform: translateY(20px); /* Slight lift */
+        }
+        .hero-animate.animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
 
-        /* --- NEW BACKGROUND PATTERN STYLES --- */
-        .pattern-bg {
-            /* Updated SVG for 5 seamless waves with adjusted colors and vertical alignment */
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='200' viewBox='0 0 100 200' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Line 1: Red --%3E%3Cpath d='M0 20 Q 25 0 50 20 Q 75 40 100 20' stroke='%23FF0000' stroke-width='4' fill='none'/%3E%3C!-- Line 2: White --%3E%3Cpath d='M0 60 Q 25 40 50 60 Q 75 80 100 60' stroke='%23FFFFFF' stroke-width='4' fill='none'/%3E%3C!-- Line 3: White --%3E%3Cpath d='M0 100 Q 25 80 50 100 Q 75 120 100 100' stroke='%23FFFFFF' stroke-width='4' fill='none'/%3E%3C!-- Line 4: Red --%3E%3Cpath d='M0 140 Q 25 120 50 140 Q 75 160 100 140' stroke='%23FF0000' stroke-width='4' fill='none'/%3E%3C!-- Line 5: White --%3E%3Cpath d='M0 180 Q 25 160 50 180 Q 75 200 100 180' stroke='%23FFFFFF' stroke-width='4' fill='none'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 100px 200px; /* Adjusted to new SVG height */
-            animation: scroll-bg 20s linear infinite;
-        }
-
-        @keyframes scroll-bg {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 100% 100%;
-            }
-        }
-
-        .vignette {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 75%);
-            pointer-events: none; /* Allows clicks to pass through */
-        }
-        /* --- END NEW BACKGROUND PATTERN STYLES --- */
-    </style>
+        .vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 75%);
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-white">
 
-    <header class="bg-black shadow-lg py-4 px-6 md:px-12 fixed w-full z-50">
-        <nav class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-red-600">Diaz Athletic Performance</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Home</a>
-                <a href="#training-options" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Training</a>
-                <a href="#trainer-insights" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Trainer Insights</a>
-                <a href="#client-spotlights" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Client Spotlights</a>
-                <a href="#about" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">About Us</a>
-                <a href="#contact" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-6">
-            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-300 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            <a href="#home" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Home</a>
-            <a href="#training-options" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Training</a>
-            <a href="#trainer-insights" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Trainer Insights</a>
-            <a href="#client-spotlights" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Client Spotlights</a>
-            <a href="#about" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">About Us</a>
-            <a href="#contact" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Contact</a>
-        </div>
-    </header>
+    <header class="bg-black shadow-lg py-4 px-6 md:px-12 fixed w-full z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-red-600">Diaz Athletic Performance</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Home</a>
+                <a href="#training-options" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Training</a>
+                <a href="#trainer-insights" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Trainer Insights</a>
+                <a href="#client-spotlights" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Client Spotlights</a>
+                <a href="#about" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">About Us</a>
+                <a href="#contact" class="text-gray-300 hover:text-red-600 font-medium transition duration-300">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-6">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-300 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <a href="#home" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Home</a>
+            <a href="#training-options" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Training</a>
+            <a href="#trainer-insights" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Trainer Insights</a>
+            <a href="#client-spotlights" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Client Spotlights</a>
+            <a href="#about" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">About Us</a>
+            <a href="#contact" class="text-2xl text-gray-300 hover:text-red-600 font-medium transition duration-300 py-2" onclick="toggleMobileMenu()">Contact</a>
+        </div>
+    </header>
 
-    <section id="home" class="relative h-screen flex items-center justify-center text-white bg-black">
-        <div class="absolute inset-0 pattern-bg"></div>
-        <div class="absolute inset-0 vignette"></div>
-        
-        <div class="bg-text-container">
-            <div class="bg-text" style="top: 10%; left: 0;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 25%; left: 10%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 40%; left: 20%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 55%; left: 30%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 70%; left: 40%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 85%; left: 50%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 15%; left: 60%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 30%; left: 70%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 45%; left: 80%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 60%; left: 90%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 75%; left: 100%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 90%; left: 110%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 5%; left: 120%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 20%; left: 130%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 35%; left: 140%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 50%; left: 150%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 65%; left: 160%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 80%; left: 170%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 95%; left: 180%;">Unleash Your Potential</div>
-            <div class="bg-text" style="top: 10%; left: 190%;">Unleash Your Potential</div>
-        </div>
-        <div class="container mx-auto text-center relative z-10 p-4">
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 hero-animate animate-fadeInUp" data-delay="0">Unleash Your True Potential.<br>Transform with Diaz Athletic Performance.</h1>
-            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto hero-animate animate-fadeInUp" data-delay="200">Whether you're looking for personal training, custom workout programming, or online coaching, we're here to guide you to your peak performance.</p>
-            <a href="#training-options" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hero-animate animate-fadeInUp" data-delay="400">Explore Training Options</a>
-        </div>
-    </section>
+    <section id="home" class="relative h-screen flex items-center justify-center text-white bg-black">
+        <div class="absolute inset-0"></div>
+        <div class="absolute inset-0 vignette"></div>
+        
+        <div class="bg-text-container">
+            <div class="bg-text" style="top: 10%; left: 0;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 25%; left: 10%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 40%; left: 20%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 55%; left: 30%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 70%; left: 40%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 85%; left: 50%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 15%; left: 60%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 30%; left: 70%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 45%; left: 80%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 60%; left: 90%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 75%; left: 100%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 90%; left: 110%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 5%; left: 120%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 20%; left: 130%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 35%; left: 140%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 50%; left: 150%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 65%; left: 160%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 80%; left: 170%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 95%; left: 180%;">Unleash Your Potential</div>
+            <div class="bg-text" style="top: 10%; left: 190%;">Unleash Your Potential</div>
+        </div>
+        <div class="container mx-auto text-center relative z-10 p-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 hero-animate animate-fadeInUp" data-delay="0">Unleash Your True Potential.<br>Transform with Diaz Athletic Performance.</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto hero-animate animate-fadeInUp" data-delay="200">Whether you're looking for personal training, custom workout programming, or online coaching, we're here to guide you to your peak performance.</p>
+            <a href="#training-options" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hero-animate animate-fadeInUp" data-delay="400">Explore Training Options</a>
+        </div>
+    </section>
 
-    <section id="training-options" class="py-16 md:py-24 bg-gray-900">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 scroll-animate animate-fadeInUp">Our Training Options</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300 border-2 border-transparent hover:border-red-600 scroll-animate animate-zoomIn" data-delay="0">
-                    <div class="text-red-600 text-5xl mb-6">🏋️</div>
-                    <h3 class="text-2xl font-semibold text-white mb-4">One-on-One Personal Training</h3>
-                    <p class="text-gray-300 leading-relaxed">Experience dedicated, in-person coaching tailored specifically to your goals, fitness level, and preferences.</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300 border-2 border-transparent hover:border-red-600 scroll-animate animate-zoomIn" data-delay="100">
-                    <div class="text-red-600 text-5xl mb-6">📝</div>
-                    <h3 class="text-2xl font-semibold text-white mb-4">Custom Workout Programming</h3>
-                    <p class="text-gray-300 leading-relaxed">Receive expertly designed workout plans that you can follow at your own gym or home, updated regularly.</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300 border-2 border-transparent hover:border-red-600 scroll-animate animate-zoomIn" data-delay="200">
-                    <div class="text-red-600 text-5xl mb-6">💻</div>
-                    <h3 class="text-2xl font-semibold text-white mb-4">Online Coaching & Support</h3>
-                    <p class="text-gray-300 leading-relaxed">Access our expertise from anywhere in the world with virtual coaching, video calls, and continuous support.</p>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300 border-2 border-transparent hover:border-red-600 scroll-animate animate-zoomIn" data-delay="300">
-                    <div class="text-red-600 text-5xl mb-6">🏠</div>
-                    <h3 class="text-2xl font-semibold text-white mb-4">In-Home Personal Training</h3>
-                    <p class="text-gray-300 leading-relaxed">Convenient and effective training sessions brought directly to your home, no gym membership required.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="training-options" class="py-16 md:py-24 bg-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 scroll-animate animate-fadeInUp">Our Training Options</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300 border-2 border-transparent hover:border-red-600 scroll-animate animate-zoomIn" data-delay="0">
+                    <div class="text-red-600 text-5xl mb-6">🏋️</div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">One-on-One Personal Training</h3>
+                    <p class="text-gray-300 leading-relaxed">Experience dedicated, in-person coaching tailored specifically to your goals, fitness level, and preferences.</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300 border-2 border-transparent hover:border-red-600 scroll-animate animate-zoomIn" data-delay="100">
+                    <div class="text-red-600 text-5xl mb-6">📝</div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Custom Workout Programming</h3>
+                    <p class="text-gray-300 leading-relaxed">Receive expertly designed workout plans that you can follow at your own gym or home, updated regularly.</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300 border-2 border-transparent hover:border-red-600 scroll-animate animate-zoomIn" data-delay="200">
+                    <div class="text-red-600 text-5xl mb-6">💻</div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">Online Coaching & Support</h3>
+                    <p class="text-gray-300 leading-relaxed">Access our expertise from anywhere in the world with virtual coaching, video calls, and continuous support.</p>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition duration-300 border-2 border-transparent hover:border-red-600 scroll-animate animate-zoomIn" data-delay="300">
+                    <div class="text-red-600 text-5xl mb-6">🏠</div>
+                    <h3 class="text-2xl font-semibold text-white mb-4">In-Home Personal Training</h3>
+                    <p class="text-gray-300 leading-relaxed">Convenient and effective training sessions brought directly to your home, no gym membership required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="trainer-insights" class="py-16 md:py-24 bg-gray-800">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 scroll-animate animate-fadeInUp">Trainer Insights & Resources</h2>
-            <p class="text-lg text-gray-300 mb-10 max-w-3xl mx-auto scroll-animate animate-fadeInUp" data-delay="100">Gain valuable knowledge from our certified trainers through their latest blog posts and instructional videos.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="0">
-                    <img src="https://placehold.co/400x250/333333/ffffff?text=Trainer+Blog+1" alt="Trainer Blog Post" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">5 Tips for Building Lean Muscle</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Coach Alex | July 20, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Discover the essential strategies for effective muscle growth and strength development...</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read More &rarr;</a>
-                    </div>
-                </div>
-                <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="100">
-                    <img src="https://placehold.co/400x250/333333/ffffff?text=Trainer+Video+1" alt="Trainer Video" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">Video: Perfecting Your Deadlift Form</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Coach Sarah | July 15, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Watch our step-by-step guide to ensure proper deadlift technique and prevent injuries.</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Watch Video &rarr;</a>
-                    </div>
-                </div>
-                <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="200">
-                    <img src="https://placehold.co/400x250/333333/ffffff?text=Trainer+Blog+2" alt="Trainer Blog Post" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">Nutrition for Peak Performance</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Coach Mark | July 10, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Fuel your body right! Learn how nutrition impacts your athletic performance and recovery.</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read More &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="trainer-insights" class="py-16 md:py-24 bg-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 scroll-animate animate-fadeInUp">Trainer Insights & Resources</h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-3xl mx-auto scroll-animate animate-fadeInUp" data-delay="100">Gain valuable knowledge from our certified trainers through their latest blog posts and instructional videos.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="0">
+                    <img src="https://placehold.co/400x250/333333/ffffff?text=Trainer+Blog+1" alt="Trainer Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-white mb-2">5 Tips for Building Lean Muscle</h3>
+                        <p class="text-gray-400 text-sm mb-4">By Coach Alex | July 20, 2025</p>
+                        <p class="text-gray-300 text-base mb-4">Discover the essential strategies for effective muscle growth and strength development...</p>
+                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="100">
+                    <img src="https://placehold.co/400x250/333333/ffffff?text=Trainer+Video+1" alt="Trainer Video" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-white mb-2">Video: Perfecting Your Deadlift Form</h3>
+                        <p class="text-gray-400 text-sm mb-4">By Coach Sarah | July 15, 2025</p>
+                        <p class="text-gray-300 text-base mb-4">Watch our step-by-step guide to ensure proper deadlift technique and prevent injuries.</p>
+                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Watch Video &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="200">
+                    <img src="https://placehold.co/400x250/333333/ffffff?text=Trainer+Blog+2" alt="Trainer Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-white mb-2">Nutrition for Peak Performance</h3>
+                        <p class="text-gray-400 text-sm mb-4">By Coach Mark | July 10, 2025</p>
+                        <p class="text-gray-300 text-base mb-4">Fuel your body right! Learn how nutrition impacts your athletic performance and recovery.</p>
+                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="client-spotlights" class="py-16 md:py-24 bg-gray-900">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 scroll-animate animate-fadeInUp">Client Spotlights & Success Stories</h2>
-            <p class="text-lg text-gray-300 mb-10 max-w-3xl mx-auto scroll-animate animate-fadeInUp" data-delay="100">Be inspired by the real journeys and incredible transformations of our dedicated clients.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="0">
-                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Story+1" alt="Client Success Story" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">From Couch to 5K: Sarah's Journey</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Sarah M. | June 28, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Sarah shares how Diaz Athletic Performance helped her achieve her running goals...</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read Story &rarr;</a>
-                    </div>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="100">
-                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Video+1" alt="Client Testimonial Video" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">Video: Mark's Strength Transformation</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Mark T. | June 20, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Watch Mark's incredible journey of building strength and confidence with our coaching.</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Watch Video &rarr;</a>
-                    </div>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="200">
-                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Story+2" alt="Client Success Story" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">Achieving Weight Loss: Jessica's Story</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Jessica L. | June 10, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Jessica shares her experience and tips for successful weight management with our guidance.</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read Story &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="client-spotlights" class="py-16 md:py-24 bg-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 scroll-animate animate-fadeInUp">Client Spotlights & Success Stories</h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-3xl mx-auto scroll-animate animate-fadeInUp" data-delay="100">Be inspired by the real journeys and incredible transformations of our dedicated clients.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="0">
+                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Story+1" alt="Client Success Story" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-white mb-2">From Couch to 5K: Sarah's Journey</h3>
+                        <p class="text-gray-400 text-sm mb-4">By Sarah M. | June 28, 2025</p>
+                        <p class="text-gray-300 text-base mb-4">Sarah shares how Diaz Athletic Performance helped her achieve her running goals...</p>
+                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read Story &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="100">
+                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Video+1" alt="Client Testimonial Video" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-white mb-2">Video: Mark's Strength Transformation</h3>
+                        <p class="text-gray-400 text-sm mb-4">By Mark T. | June 20, 2025</p>
+                        <p class="text-gray-300 text-base mb-4">Watch Mark's incredible journey of building strength and confidence with our coaching.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="200">
+                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Story+2" alt="Client Success Story" class="w-full h-48 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold text-white mb-2">Achieving Weight Loss: Jessica's Story</h3>
+                        <p class="text-gray-400 text-sm mb-4">By Jessica L. | June 10, 2025</p>
+                        <p class="text-gray-300 text-base mb-4">Jessica shares her experience and tips for successful weight management with our guidance.</p>
+                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read Story &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section id="about" class="py-16 md:py-24 bg-black">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <img src="Screenshot_20250729_220423_Gallery.jpg" alt="About Diaz Athletic Performance" class="rounded-lg shadow-xl w-full h-auto object-cover border-2 border-red-600 scroll-animate animate-slideInLeft">
-            </div>
-            <div class="md:w-1/2 text-center md:text-left scroll-animate animate-slideInRight" data-delay="100">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">About Diaz Athletic Performance</h2>
-                <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                    At Diaz Athletic Performance, we are dedicated to helping individuals unlock their peak physical capabilities. Specializing in personalized training, custom workout programming, and flexible online and at-home coaching, we provide the tools and expertise you need to achieve your athletic and fitness goals.
-                </p>
-                <p class="text-lg text-gray-300 leading-relaxed">
-                    Our philosophy is built on a foundation of science-backed methods, consistent support, and a commitment to your success. Join our community and experience the difference of truly personalized athletic development.
-                </p>
-            </div>
-        </div>
-    </section>
+    <section id="about" class="py-16 md:py-24 bg-black">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="Screenshot_20250729_220423_Gallery.jpg" alt="About Diaz Athletic Performance" class="rounded-lg shadow-xl w-full h-auto object-cover border-2 border-red-600 scroll-animate animate-slideInLeft">
+            </div>
+            <div class="md:w-1/2 text-center md:text-left scroll-animate animate-slideInRight" data-delay="100">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">About Diaz Athletic Performance</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                    At Diaz Athletic Performance, we are dedicated to helping individuals unlock their peak physical capabilities. Specializing in personalized training, custom workout programming, and flexible online and at-home coaching, we provide the tools and expertise you need to achieve your athletic and fitness goals.
+                </p>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Our philosophy is built on a foundation of science-backed methods, consistent support, and a commitment to your success. Join our community and experience the difference of truly personalized athletic development.
+                </p>
+            </div>
+        </div>
+    </section>
 
-    <section id="contact" class="py-16 md:py-24 bg-red-600 text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-animate animate-fadeInUp">Ready to Elevate Your Performance?</h2>
-            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto scroll-animate animate-fadeInUp" data-delay="100">Contact Diaz Athletic Performance today to discuss your goals and find the perfect training option for you!</p>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-                <a href="tel:+1234567890" class="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 scroll-animate animate-zoomIn" data-delay="200">
-                    Call Us: (123) 456-7890
-                </a>
-                <a href="mailto:info@diazathletic.com" class="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 scroll-animate animate-zoomIn" data-delay="300">
-                    Email Us: info@diazathletic.com
-                </a>
-            </div>
-            <div class="mt-10 text-lg">
-                <p>Follow us on social media for daily inspiration and tips!</p>
-            </div>
-        </div>
-    </section>
+    <section id="contact" class="py-16 md:py-24 bg-red-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 scroll-animate animate-fadeInUp">Ready to Elevate Your Performance?</h2>
+            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto scroll-animate animate-fadeInUp" data-delay="100">Contact Diaz Athletic Performance today to discuss your goals and find the perfect training option for you!</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                <a href="tel:+1234567890" class="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 scroll-animate animate-zoomIn" data-delay="200">
+                    Call Us: (123) 456-7890
+                </a>
+                <a href="mailto:info@diazathletic.com" class="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 scroll-animate animate-zoomIn" data-delay="300">
+                    Email Us: info@diazathletic.com
+                </a>
+            </div>
+            <div class="mt-10 text-lg">
+                <p>Follow us on social media for daily inspiration and tips!</p>
+            </div>
+        </div>
+    </section>
 
-    <footer class="bg-black text-gray-400 py-8 px-6 md:px-12">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <p>&copy; 2025 Diaz Athletic Performance. All rights reserved.</p>
-            <div class="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" class="hover:text-white transition duration-300">Facebook</a>
-                <a href="#" class="hover:text-white transition duration-300">Instagram</a>
-                <a href="#" class="hover:text-white transition duration-300">Twitter</a>
-            </div>
-        </div>
-    </footer>
+    <footer class="bg-black text-gray-400 py-8 px-6 md:px-12">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <p>&copy; 2025 Diaz Athletic Performance. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition duration-300">Facebook</a>
+                <a href="#" class="hover:text-white transition duration-300">Instagram</a>
+                <a href="#" class="hover:text-white transition duration-300">Twitter</a>
+            </div>
+        </div>
+    </footer>
 
-    <button id="scrollToTopBtn" title="Go to top">⬆️</button>
+    <button id="scrollToTopBtn" title="Go to top">⬆️</button>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
 
-        function toggleMobileMenu() {
-            mobileMenu.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
-        }
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+        }
 
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-        closeMobileMenu.addEventListener('click', toggleMobileMenu);
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        closeMobileMenu.addEventListener('click', toggleMobileMenu);
 
-        // Close mobile menu when a link is clicked
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', toggleMobileMenu);
-        });
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
 
-        // Scroll-to-top button functionality
-        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        // Scroll-to-top button functionality
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-        window.onscroll = function() {scrollFunction()};
+        window.onscroll = function() {scrollFunction()};
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                scrollToTopBtn.style.display = "block";
-            } else {
-                scrollToTopBtn.style.display = "none";
-            }
-        }
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        }
 
-        scrollToTopBtn.addEventListener("click", function() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        });
+        scrollToTopBtn.addEventListener("click", function() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        });
 
-        // Intersection Observer for scroll animations
-        const scrollAnimateElements = document.querySelectorAll('.scroll-animate');
+        // Intersection Observer for scroll animations
+        const scrollAnimateElements = document.querySelectorAll('.scroll-animate');
 
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1 // Trigger when 10% of the element is visible
-        };
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Element is in view, add 'is-visible' class
-                    const delay = entry.target.dataset.delay ? parseInt(entry.target.dataset.delay) : 0;
-                    setTimeout(() => {
-                        entry.target.classList.add('is-visible');
-                    }, delay);
-                } else {
-                    // Element is out of view, remove 'is-visible' class
-                    entry.target.classList.remove('is-visible');
-                }
-            });
-        }, observerOptions);
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Element is in view, add 'is-visible' class
+                    const delay = entry.target.dataset.delay ? parseInt(entry.target.dataset.delay) : 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('is-visible');
+                    }, delay);
+                } else {
+                    // Element is out of view, remove 'is-visible' class
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
 
-        scrollAnimateElements.forEach(element => {
-            observer.observe(element);
-        });
+        scrollAnimateElements.forEach(element => {
+            observer.observe(element);
+        });
 
-        // Initial animations for elements in the Hero section
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.hero-animate').forEach(element => {
-                const delay = element.dataset.delay ? parseInt(element.dataset.delay) : 0;
-                setTimeout(() => {
-                    element.style.animationPlayState = 'running';
-                    element.style.animationDelay = `${delay}ms`;
-                }, delay);
-            });
-        });
-    </script>
+        // Initial animations for elements in the Hero section
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.hero-animate').forEach(element => {
+                const delay = element.dataset.delay ? parseInt(element.dataset.delay) : 0;
+                setTimeout(() => {
+                    element.style.animationPlayState = 'running';
+                    element.style.animationDelay = `${delay}ms`;
+                }, delay);
+            });
+        });
+    </script>
 </body>
 </html>
