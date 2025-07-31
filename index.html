@@ -67,6 +67,17 @@
             100% { transform: translateX(-100%); }
         }
 
+        @media (max-width: 768px) {
+            .slideshow-container {
+                padding-bottom: 177.78%; /* 9:16 Aspect Ratio for mobile screens */
+            }
+        }
+
+        /* Add this to your existing <style> block */
+        .slideshow-container {
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio for larger screens */
+        }
+
         .bg-text-container {
             position: absolute;
             top: 0;
@@ -258,9 +269,8 @@
 
         <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2 relative">
-                <div id="slideshow-container" class="relative rounded-lg overflow-hidden shadow-xl border-2 border-red-600 w-full h-auto" style="padding-bottom: 177.78%;">
+                <div id="slideshow-container" class="relative rounded-lg overflow-hidden shadow-xl border-2 border-red-600 w-full h-auto pb-[177.78%]">
                     <img id="slideshow-image" src="slideshow-1.jpg" alt="Slideshow Image" class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out">
-                    <div id="slideshow-overlay" class="absolute top-0 left-0 w-full h-full bg-black opacity-0 transition-opacity duration-1000"></div>
                 </div>
             </div>
             <div class="md:w-1/2 text-center md:text-left scroll-animate animate-slideInRight" data-delay="100">
@@ -490,39 +500,43 @@
             observer.observe(element);
         });
 
-        // Image Slideshow for About section
-        const slideshowImage = document.getElementById('slideshow-image');
-        const slideshowOverlay = document.getElementById('slideshow-overlay');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Existing code for hero animations and other DCL events...
 
-        const images = [
-            'slideshow-1.jpg',
-            'slideshow-2.jpg',
-            'slideshow-3.jpg',
-            'slideshow-4.jpg',
-            'slideshow-5.jpg',
-            'slideshow-6.jpg',
-            'slideshow-7.jpg'
-        ];
+            // Image Slideshow for About section
+            const slideshowImage = document.getElementById('slideshow-image');
+            const slideshowOverlay = document.getElementById('slideshow-overlay');
 
-        let currentIndex = 0;
-        const intervalTime = 4000; // 4 seconds
+            const images = [
+                'slideshow-1.jpg',
+                'slideshow-2.jpg',
+                'slideshow-3.jpg',
+                'slideshow-4.jpg',
+                'slideshow-5.jpg',
+                'slideshow-6.jpg',
+                'slideshow-7.jpg'
+            ];
 
-        function changeImage() {
-            // Start the fade-out effect
-            slideshowImage.style.opacity = '0';
-            
-            // Wait for the fade-out to complete
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % images.length;
-                slideshowImage.src = images[currentIndex];
-                
-                // Start the fade-in effect after the image source has been updated
-                slideshowImage.style.opacity = '1';
-            }, 1000); // This duration should match the `duration-1000` in the CSS
-        }
+            let currentIndex = 0;
+            const intervalTime = 4000; // 4 seconds
 
-        // Start the slideshow when the page loads
-        setInterval(changeImage, intervalTime);
+            function changeImage() {
+                // Start the fade-out effect
+                slideshowImage.style.opacity = '0';
+
+                // Wait for the fade-out to complete
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    slideshowImage.src = images[currentIndex];
+
+                    // Start the fade-in effect after the image source has been updated
+                    slideshowImage.style.opacity = '1';
+                }, 1000); // This duration should match the `duration-1000` in the CSS
+            }
+
+            // Start the slideshow when the page loads
+            setInterval(changeImage, intervalTime);
+        });
 
         // Initial animations for elements in the Hero section
         document.addEventListener('DOMContentLoaded', () => {
