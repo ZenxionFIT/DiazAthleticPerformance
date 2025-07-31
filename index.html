@@ -255,22 +255,30 @@
             <source src="aboutus_bg_video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        
+
         <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <img src="Screenshot_20250729_220423_Gallery.jpg" alt="About Diaz Athletic Performance" class="rounded-lg shadow-xl w-full h-auto object-cover border-2 border-red-600 scroll-animate animate-slideInLeft">
+            <div class="md:w-1/2 relative">
+                <div id="slideshow-container" class="relative rounded-lg overflow-hidden shadow-xl border-2 border-red-600 w-full h-auto" style="padding-bottom: 177.78%;">
+                    <img id="slideshow-image" src="slideshow-1.jpg" alt="Slideshow Image" class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out">
+                    <div id="slideshow-overlay" class="absolute top-0 left-0 w-full h-full bg-black opacity-0 transition-opacity duration-1000"></div>
+                </div>
             </div>
             <div class="md:w-1/2 text-center md:text-left scroll-animate animate-slideInRight" data-delay="100">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">About Diaz Athletic Performance</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-center justify-center md:justify-start">
+                    About Coach Diaz
+                </h2>
                 <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                    With over 15 years of experience in fitness and training, I am passionate about helping people transform their lives through tailored fitness and nutrition strategies. From elite athletes to those just starting their fitness journey, I believe that everyone has the potential to improve with the right guidance, support, and commitment. My approach is simple: fitness and nutrition should be for everyone, regardless of age or ability. Whether you're recovering from an injury, an athlete looking to optimize performance, or someone wanting to start your fitness journey, I provide custom training and nutrition plans that work for you. I don’t drink, smoke, or use drugs, and I am dedicated to living a life of discipline, focus, and health.
+                    With over 15 years of experience, I am passionate about helping people transform their lives through tailored fitness and nutrition. My philosophy is simple: fitness is for everyone, regardless of age or ability. Whether you're a beginner, an athlete seeking to optimize performance, or someone recovering from an injury, I provide custom training and nutrition plans to get you there. I am dedicated to a life of discipline and health, and I bring that same focus to every client I work with.
                 </p>
                 <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                    I’ve had the privilege of training and developing personalized diet plans for top-tier professionals, including Secret Service agents, state troopers, police officers, Navy personnel, and correction officers, also beginners. My deep understanding of physical performance is complemented by my work as a Physical Therapy Aide, where I assist patients of all ages, from children to seniors, with rehabilitation and injury recovery.
+                    I've had the privilege of training top-tier professionals, including Secret Service agents, state troopers, police officers, Navy personnel, and correction officers, as well as everyday individuals taking their first steps. My expertise is also backed by my work as a Physical Therapy Aide, where I assist patients of all ages with rehabilitation and injury recovery.
                 </p>
                 <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                    Currently, I'm in the process of representing the Dominican Republic in Olympic Weightlifting, backed by two Olympic coaches—one for shot put and discus, and another for weightlifting.As a National Champion in Shot Put and Discus for Track & Field at Nassau Community College, as well as an All-American in high school, my competitive background has shaped the way I approach training—focused, disciplined, and results-driven.
+                    I am a National Champion in Shot Put and Discus for Track & Field and an All-American in high school. My competitive background has shaped my results-driven approach. Currently, I am a hopeful for the Dominican Republic's Olympic Weightlifting team, training under two esteemed Olympic coaches. This relentless pursuit of excellence is the same energy I bring to your fitness journey.
                 </p>
+                <a href="#contact" class="inline-block mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    Start Your Transformation
+                </a>
             </div>
         </div>
     </section>
@@ -481,6 +489,40 @@
         scrollAnimateElements.forEach(element => {
             observer.observe(element);
         });
+
+        // Image Slideshow for About section
+        const slideshowImage = document.getElementById('slideshow-image');
+        const slideshowOverlay = document.getElementById('slideshow-overlay');
+
+        const images = [
+            'slideshow-1.jpg',
+            'slideshow-2.jpg',
+            'slideshow-3.jpg',
+            'slideshow-4.jpg',
+            'slideshow-5.jpg',
+            'slideshow-6.jpg',
+            'slideshow-7.jpg'
+        ];
+
+        let currentIndex = 0;
+        const intervalTime = 4000; // 4 seconds
+
+        function changeImage() {
+            // Start the fade-out effect
+            slideshowImage.style.opacity = '0';
+            
+            // Wait for the fade-out to complete
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                slideshowImage.src = images[currentIndex];
+                
+                // Start the fade-in effect after the image source has been updated
+                slideshowImage.style.opacity = '1';
+            }, 1000); // This duration should match the `duration-1000` in the CSS
+        }
+
+        // Start the slideshow when the page loads
+        setInterval(changeImage, intervalTime);
 
         // Initial animations for elements in the Hero section
         document.addEventListener('DOMContentLoaded', () => {
