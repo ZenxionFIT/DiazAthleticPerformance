@@ -142,6 +142,11 @@
             background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 75%);
             pointer-events: none; /* Allows clicks to pass through */
         }
+
+        .video-bg-left {
+            transform: translateX(20%); /* Adjust this value to shift the video left or right */
+            width: 120%; /* Increase the width to ensure it still covers the screen after shifting */
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -276,44 +281,13 @@
         </div>
     </section>
 
-    <section id="client-spotlights" class="py-16 md:py-24 bg-gray-900">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 scroll-animate animate-fadeInUp">Client Spotlights & Success Stories</h2>
-            <p class="text-lg text-gray-300 mb-10 max-w-3xl mx-auto scroll-animate animate-fadeInUp" data-delay="100">Be inspired by the real journeys and incredible transformations of our dedicated clients.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="0">
-                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Story+1" alt="Client Success Story" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">From Couch to 5K: Sarah's Journey</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Sarah M. | June 28, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Sarah shares how Diaz Athletic Performance helped her achieve her running goals...</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read Story &rarr;</a>
-                    </div>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="100">
-                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Video+1" alt="Client Testimonial Video" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">Video: Mark's Strength Transformation</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Mark T. | June 20, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Watch Mark's incredible journey of building strength and confidence with our coaching.</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Watch Video &rarr;</a>
-                    </div>
-                </div>
-                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-transparent hover:border-red-600 transition duration-300 scroll-animate animate-zoomIn" data-delay="200">
-                    <img src="https://placehold.co/400x250/1a202c/ffffff?text=Client+Story+2" alt="Client Success Story" class="w-full h-48 object-cover">
-                    <div class="p-6 text-left">
-                        <h3 class="text-xl font-semibold text-white mb-2">Achieving Weight Loss: Jessica's Story</h3>
-                        <p class="text-gray-400 text-sm mb-4">By Jessica L. | June 10, 2025</p>
-                        <p class="text-gray-300 text-base mb-4">Jessica shares her experience and tips for successful weight management with our guidance.</p>
-                        <a href="#" class="text-red-500 hover:text-red-600 font-medium">Read Story &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-16 md:py-24 bg-black">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+    <section id="about" class="relative py-16 md:py-24 bg-black overflow-hidden">
+        <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover opacity-20 video-bg-left">
+            <source src="aboutus_bg_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2">
                 <img src="Screenshot_20250729_220423_Gallery.jpg" alt="About Diaz Athletic Performance" class="rounded-lg shadow-xl w-full h-auto object-cover border-2 border-red-600 scroll-animate animate-slideInLeft">
             </div>
@@ -335,10 +309,10 @@
             <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto scroll-animate animate-fadeInUp" data-delay="100">Contact Diaz Athletic Performance today to discuss your goals and find the perfect training option for you!</p>
             <div class="flex flex-col md:flex-row justify-center items-center gap-6">
                 <a href="tel:+1234567890" class="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 scroll-animate animate-zoomIn" data-delay="200">
-                    Call Us: (917) 704-6449
+                    Call Us: (123) 456-7890
                 </a>
                 <a href="mailto:info@diazathletic.com" class="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 scroll-animate animate-zoomIn" data-delay="300">
-                    Email Us: zenxionfit@gmail.com
+                    Email Us: info@diazathletic.com
                 </a>
             </div>
             <div class="mt-10 text-lg">
@@ -349,7 +323,7 @@
 
     <footer class="bg-black text-gray-400 py-8 px-6 md:px-12">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <p>&copy; 2025 Diaz Athletic Performance.</p>
+            <p>&copy; 2025 Diaz Athletic Performance. All rights reserved.</p>
             <div class="flex space-x-6 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white transition duration-300">Facebook</a>
                 <a href="#" class="hover:text-white transition duration-300">Instagram</a>
