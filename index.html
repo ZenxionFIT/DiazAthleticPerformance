@@ -147,6 +147,24 @@
             transform: translateX(20%); /* Adjust this value to shift the video left or right */
             width: 120%; /* Increase the width to ensure it still covers the screen after shifting */
         }
+
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        .mySlides {
+            display: none;
+            height: 100%;
+        }
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from { opacity: .4 }
+            to { opacity: 1 }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -257,8 +275,30 @@
         </video>
         
         <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <img src="Screenshot_20250729_220423_Gallery.jpg" alt="About Diaz Athletic Performance" class="rounded-lg shadow-xl w-full h-auto object-cover border-2 border-red-600 scroll-animate animate-slideInLeft">
+            <div class="md:w-1/2 relative h-96 md:h-full">
+                <div class="slideshow-container w-full h-full rounded-lg shadow-xl border-2 border-red-600 overflow-hidden relative">
+                    <div class="mySlides fade">
+                        <img src="slideshow-1.jpg" alt="Description for Image 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="slideshow-2.jpg" alt="Description for Image 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="slideshow-3.jpg" alt="Description for Image 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="slideshow-4.jpg" alt="Description for Image 4" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="slideshow-5.jpg" alt="Description for Image 5" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="slideshow-6.jpg" alt="Description for Image 6" class="w-full h-full object-cover">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="slideshow-7.jpg" alt="Description for Image 7" class="w-full h-full object-cover">
+                    </div>
+                </div>
             </div>
             <div class="md:w-1/2 text-center md:text-left scroll-animate animate-slideInRight" data-delay="100">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">About Diaz Athletic Performance</h2>
@@ -477,6 +517,21 @@
                 }
             });
         }, observerOptions);
+
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
 
         scrollAnimateElements.forEach(element => {
             observer.observe(element);
