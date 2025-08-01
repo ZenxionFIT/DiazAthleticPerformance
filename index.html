@@ -154,7 +154,7 @@
             position: relative;
             margin: auto;
             /* New rule to maintain aspect ratio on all screens */
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 9 / 16;
         }
         .mySlides {
             display: none;
@@ -283,7 +283,8 @@
         </video>
         
         <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2 relative"> <div class="slideshow-container w-full rounded-lg shadow-xl border-2 border-red-600 overflow-hidden relative">
+            <div class="md:w-1/2 relative h-96 md:h-full">
+                <div class="slideshow-container w-full h-full rounded-lg shadow-xl border-2 border-red-600 overflow-hidden relative">
                     <div class="mySlides fade">
                         <img src="slideshow-1.jpg" alt="Description for Image 1" class="w-full h-full object-cover">
                     </div>
