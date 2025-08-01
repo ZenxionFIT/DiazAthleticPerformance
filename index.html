@@ -148,14 +148,22 @@
             width: 120%; /* Increase the width to ensure it still covers the screen after shifting */
         }
 
+        /* SLIDESHOW STYLES (MODIFIED) */
         .slideshow-container {
             max-width: 1000px;
             position: relative;
             margin: auto;
+            /* New rule to maintain aspect ratio on all screens */
+            aspect-ratio: 16 / 9;
         }
         .mySlides {
             display: none;
             height: 100%;
+        }
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images fill the container without being distorted */
         }
         .fade {
             animation-name: fade;
@@ -275,8 +283,7 @@
         </video>
         
         <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2 relative h-96 md:h-full">
-                <div class="slideshow-container w-full h-full rounded-lg shadow-xl border-2 border-red-600 overflow-hidden relative">
+            <div class="md:w-1/2 relative"> <div class="slideshow-container w-full rounded-lg shadow-xl border-2 border-red-600 overflow-hidden relative">
                     <div class="mySlides fade">
                         <img src="slideshow-1.jpg" alt="Description for Image 1" class="w-full h-full object-cover">
                     </div>
